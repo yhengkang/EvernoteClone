@@ -1,0 +1,11 @@
+
+<h1> Project in Progress.. </h1>
+<br>
+<% if user_signed_in? %>
+	<%= button_to "Log Out", destroy_user_session_url, :method => :delete%>
+<% else %>
+	<a href="<%=new_user_registration_path%>">Sign Up</a>
+	<br>
+	<a href="<%=new_user_session_path%>">Sign In</a>
+	<br>
+<% end %>	

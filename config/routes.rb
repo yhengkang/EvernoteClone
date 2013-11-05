@@ -1,6 +1,8 @@
 EvernoteClone::Application.routes.draw do
 
+	root :to => "StaticPages#welcome"
+  
   devise_for :users
 
-  root :to => "StaticPages#index"
+  get "/home", :to => "StaticPages#home"
 end
