@@ -5,4 +5,6 @@ EvernoteClone::Application.routes.draw do
   devise_for :users
 
   get "/home", :to => "StaticPages#home"
+
+  resources :notes, :only => [:create, :destroy]
 end

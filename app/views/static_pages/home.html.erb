@@ -1,1 +1,14 @@
 <h1> Temporary Home Page </h1>	
+
+<form action="<%=notes_url%>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+	<label for="note_title">Title</label>
+	<br>
+	<input type="text" name="note[title]" id="note_title">
+	<br>
+	<label for="note_content">Content</label>
+	<br>
+	<textarea name="note[content]" rows="10" cols="50"></textarea>
+	<br>
+	<input type="submit" value="Create Note"> 
+</form>
