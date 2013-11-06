@@ -3,8 +3,6 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 		this.noteDisplay = $("#note-display"),
 		this.notebookSidebar = $("#notebook-sidebar")
 		this.notes = collection
-		// this.notes = new EvernoteClone.Collections.Notes(),
-		// this.notes.fetch();
 	},
 
 	routes: {

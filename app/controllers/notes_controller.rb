@@ -37,6 +37,8 @@ class NotesController < ApplicationController
   end
 
   def destroy
+    Note.find(params[:id]).destroy
+    render :status => :ok
   end
 
 end

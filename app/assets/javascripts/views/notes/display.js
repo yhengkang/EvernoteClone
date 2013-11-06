@@ -3,11 +3,11 @@
 	template: JST["notes/display"],
 
 	events: {
-		"submit form" : "updateNote"
+		"submit form" : "updateNote",
+		"click #delete-note": "deleteNote"
 	},
 
 	render: function() {
-		console.log(this.model);
 		var renderedContent = this.template({
 			note: this.model
 		});
@@ -24,6 +24,12 @@
 				console.log("Updated Note")
 			}
 		});
+	},
+
+	deleteNote: function() {
+		this.model.destroy();
+		this.$el.empty();
 	}
+
 
 });
