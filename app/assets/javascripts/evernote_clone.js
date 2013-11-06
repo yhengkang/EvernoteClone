@@ -4,8 +4,13 @@ window.EvernoteClone = {
   Views: {},
   Routers: {},
   initialize: function() {
-  	var router = new EvernoteClone.Routers.AppRouter($("body"));
-  	Backbone.history.start();
+  	var notes = new EvernoteClone.Collections.Notes();
+  	notes.fetch({
+  		success: function() {
+  			var router = new EvernoteClone.Routers.AppRouter($("body"), notes);
+		  	Backbone.history.start();
+  		}
+  	});
   }
 };
 

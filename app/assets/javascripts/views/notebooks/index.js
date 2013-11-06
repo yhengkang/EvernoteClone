@@ -1,6 +1,14 @@
 EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
 	template: JST["notebooks/index"],
 
+	initialize: function() {
+		var events = ["add", "remove", "sync"];
+		var that = this; 
+		events.forEach(function(event){
+			that.listenTo(that.collection, event, that.render)
+		});
+	},
+
 	events: {
 		"dblclick #note-item" : "showNote"
 	},
