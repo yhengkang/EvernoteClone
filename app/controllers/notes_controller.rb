@@ -12,10 +12,28 @@ class NotesController < ApplicationController
   	end
   end
 
-  def destroy
+  def show
+    @note = Note.find_by_user_id(current_user.id)
+    if @note.nil?
+      @note = Note.new() 
+      @note.title = "Untitled Note"
+    end
+    render :json => @note
   end
 
-  def new
+  def index
+    @notes = Note.where("user_id = ?", current_user.id)
+    if @notes.empty?
+      @notes << Note.new(title: "Untitled Note" )
+    end
+    render :json => @notes
+  end
+
+  def update
+
+  end
+
+  def destroy
   end
 
 end
