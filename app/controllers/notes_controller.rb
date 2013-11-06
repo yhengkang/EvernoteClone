@@ -15,6 +15,7 @@ class NotesController < ApplicationController
   def show
     @note = Note.find_by_user_id(current_user.id)
     if @note.nil?
+      #maybe create so the notes have an id so updates will work?
       @note = Note.new() 
       @note.title = "Untitled Note"
     end
@@ -30,7 +31,9 @@ class NotesController < ApplicationController
   end
 
   def update
-
+    @note = Note.find(params[:id])
+    @note.update_attributes(params[:note])
+    render :json => @note
   end
 
   def destroy

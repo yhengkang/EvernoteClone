@@ -5,7 +5,8 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	routes: {
-		'' : "renderAll"
+		'' : "renderAll",
+		'notes/:id' : "renderNote"
 	},
 
 	renderAll: function() {
@@ -14,16 +15,26 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 		var that = this;
 		notes.fetch({
 			success: function(notes) {
-				console.log(notes);
-				that.renderNote(notes);		
+				that.notes = notes
+				that.renderIndex();		
 			}
 		})
 		
 	},
 
-	renderNote: function(notes) {
-		var displayView = new EvernoteClone.Views.NoteDisplay(notes);
+	renderNote: function(id) {
+		var displayView = new EvernoteClone.Views.NoteDisplay({
+			model: this.notes.get(id)
+		});
 		this.noteDisplay.html(displayView.render().$el);
+	},
+
+	renderIndex: function() {
+		var indexView = new EvernoteClone.Views.NotebooksIndex({
+			collection: this.notes
+		}); 	
+		this.notebookSidebar.html(indexView.render().$el);
 	}
+
 
 });

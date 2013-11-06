@@ -1,0 +1,6 @@
+
+<ul> 
+<% notes.forEach(function(note){ %>
+	<li data-id="<%=note.get("id")%>"> <%= note.get("title") %> </li>
+<% }) %>	
+</ul>
