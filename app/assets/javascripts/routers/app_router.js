@@ -11,21 +11,20 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 
 	renderAll: function() {
 		console.log("rendering all..");
-		var notes = new EvernoteClone.Collections.Notes();
+		this.notes = new EvernoteClone.Collections.Notes();
 		var that = this;
-		notes.fetch({
+		this.notes.fetch({
 			success: function(notes) {
-				that.notes = notes
 				that.renderIndex();		
 			}
-		})
-		
+		});
 	},
 
 	renderNote: function(id) {
 		var displayView = new EvernoteClone.Views.NoteDisplay({
 			model: this.notes.get(id)
 		});
+		//SWAP VIEW
 		this.noteDisplay.html(displayView.render().$el);
 	},
 
@@ -33,8 +32,8 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 		var indexView = new EvernoteClone.Views.NotebooksIndex({
 			collection: this.notes
 		}); 	
+		//SWAP VIEW
 		this.notebookSidebar.html(indexView.render().$el);
 	}
-
 
 });

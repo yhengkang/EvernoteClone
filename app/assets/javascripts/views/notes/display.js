@@ -1,11 +1,6 @@
-EvernoteClone.Views.NoteDisplay = Backbone.View.extend({
+	EvernoteClone.Views.NoteDisplay = Backbone.View.extend({
 
 	template: JST["notes/display"],
-
-	// initialize: function(notes) {
-	// 	this.notes = notes;
-	// 	this.note = notes.models[0];
-	// },
 
 	events: {
 		"submit form" : "updateNote"
