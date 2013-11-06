@@ -29,6 +29,7 @@
 	deleteNote: function() {
 		this.model.destroy();
 		this.$el.empty();
+		Backbone.history.navigate("", {trigger: true});
 	}
 
 
