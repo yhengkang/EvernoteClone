@@ -5,7 +5,6 @@ class NotesController < ApplicationController
 	def create
   	@note = Note.new(params[:note])
   	@note.user_id = current_user.id
-    p "in create!"
 
     if @note.title.nil?
       @note.title = "Untitled Note"
@@ -39,10 +38,7 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
-    p "in update!"
-    p params
     @note.update_attributes(params[:note])
-    p @note
     render :json => @note
   end
 
