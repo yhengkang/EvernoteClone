@@ -44,7 +44,7 @@ class NotesController < ApplicationController
 
   def destroy
     Note.find(params[:id]).destroy
-    render :status => 200
+    render :json => {:head => :ok}
   end
 
 end

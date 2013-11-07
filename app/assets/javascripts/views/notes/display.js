@@ -3,7 +3,7 @@
 	template: JST["notes/display"],
 
 	events: {
-		"submit form" : "updateNote",
+		"click #update-note" : "updateNote",
 		"click #delete-note": "deleteNote"
 	},
 
@@ -15,7 +15,8 @@
 		return this;
 	},
 
-	updateNote: function() {	
+	updateNote: function(event) {	
+		console.log("update note");
 		event.preventDefault();	
 		var formData = $("form#note-form").serializeJSON();
 		var that = this;
@@ -27,10 +28,20 @@
 		});
 	},
 
-	deleteNote: function() {
-		this.model.destroy();
-		this.$el.empty();
-		Backbone.history.navigate("", {trigger: true});
+	deleteNote: function(event) {
+		event.preventDefault();
+		var that = this;
+		this.model.destroy({
+			success: function() {
+				console.log("in success of deletenote");
+				var lastNoteId = that.collection.models[0].get("id");
+				Backbone.history.navigate("notes/" + lastNoteId, {trigger: true});
+			},
+			error: function() {
+				console.log("deletion failed");
+			},
+			wait: true
+		});
 	}
 
 
