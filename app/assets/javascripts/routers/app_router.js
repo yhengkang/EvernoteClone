@@ -37,7 +37,7 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 			collection: this.notes
 		}); 	
 		if(this._oldNotesIndex){
-			this._oldNotesIndex
+			this._oldNotesIndex.remove();
 		}
 		this._oldNotesIndex = indexView
 		this.notesSidebar.html(indexView.render().$el);
@@ -48,6 +48,10 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 		var indexView = new EvernoteClone.Views.NotebooksIndex({
 			collection: this.notebooks
 		})
+		if(this._oldNotebooksIndex){
+			this._oldNotebooksIndex.remove();
+		}
+		this._oldNotebooksIndex = indexView
 		this.notebooksSidebar.html(indexView.render().$el);
 	}
 
