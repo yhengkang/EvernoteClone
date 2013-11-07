@@ -15,13 +15,14 @@
 		return this;
 	},
 
-	updateNote: function() {
+	updateNote: function() {	
 		event.preventDefault();	
 		var formData = $("form#note-form").serializeJSON();
-		console.log(formData);
+		var that = this;
+
 		this.model.save(formData, {
 			success: function() {
-				console.log("Updated Note")
+				that.collection.sort();		
 			}
 		});
 	},

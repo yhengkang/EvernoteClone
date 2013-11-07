@@ -1,7 +1,9 @@
 
-<ul> 
-<% notes.forEach(function(note){ %>
-	<li data-id="<%=note.get("id")%>" id="note-item"> <%= note.get("title") %> </li>
-<% }) %>	
-</ul>
-<button id="create-note">New Note</button>
+<h3>All Notes</h3>
+<% notes.forEach(function(note) { %>
+	<pre data-id="<%=note.get("id")%>" id="note-item">	
+		<%=note.escape("title")%>
+	</pre>
+<% }); %>
+
+<button class="btn btn-default" id="create-note">New Note</button>

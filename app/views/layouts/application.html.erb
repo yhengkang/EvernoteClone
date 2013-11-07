@@ -6,14 +6,17 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body bgcolor="6581DE">
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 
 <%= yield %>
 
-	<div id="notebook-sidebar"></div>
-	<div id="note-display"></div>
+<div class="container">
+	<div class="col-md-4" style="background: " id="notebook-sidebar"></div>
+	<div class="col-md-4" style="background: " id="notes-sidebar"></div>
+	<div class="col-md-6" style="background: " id="note-display"></div>
+</div>
 
 </body>
 </html>

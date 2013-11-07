@@ -1,13 +1,16 @@
-<form id="note-form">
-<label for="note_title">Title</label>
-<br>
-<input type="text" name="note[title]" 
-			 value="<%=note.escape("title")%>" id="note_title">
-<br>
-<label for="note_content">Content</label>
-<br>
-<textarea name="note[content]" rows="10" cols="50"><%=note.escape("content")%></textarea>
-<br>
-<input type="submit" value="Update Note">
+<h3>Current Note</h3>
+<form class="well form-inline offset2 custom-form" id="note-form">
+	<div class="controls">
+		<label for="note_title" class="sr-only">Title</label>
+		<br>
+		<input class="form-control" type="text" name="note[title]" 
+					 value="<%=note.escape("title")%>" id="note_title" placeholder="Untitled Note">
+		<br>
+		<label for="note_content" class="sr-only">Content</label>
+		<br>
+		<textarea class="form-control" rows="15" name="note[content]" placeholder="Write here!"><%=note.escape("content")%></textarea>
+		<br>
+		<button type="submit" class="btn btn-default">Update Note</button>
+		<button id="delete-note" class="btn btn-default">Erase</button>
+	</div>
 </form>
-<button id="delete-note">Delete</button>

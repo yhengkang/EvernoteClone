@@ -32,6 +32,8 @@ gem 'devise'
 gem 'backbone-on-rails'
 gem 'ejs'
 
+gem 'bootstrap-sass', '~> 3.0.1.0.rc'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

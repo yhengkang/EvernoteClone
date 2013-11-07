@@ -6,7 +6,7 @@ window.EvernoteClone = {
   initialize: function() {
   	var notes = new EvernoteClone.Collections.Notes();
   	notes.fetch({
-  		success: function() {
+  		success: function() { 
   			var router = new EvernoteClone.Routers.AppRouter($("body"), notes);
 		  	Backbone.history.start();
   		}

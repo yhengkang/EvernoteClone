@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+// Loads all Bootstrap javascripts
+//= require bootstrap
 //= require jquery.serializeJSON.min.js
 //= require evernote_clone
 //= require_tree ../templates
