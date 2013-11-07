@@ -13,7 +13,6 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	renderAll: function() {
-		console.log("rendering all..");
 		this.renderNotesIndex();
 		this.renderNotebooksIndex();
 		var lastNote = this.notes.models[0]
@@ -21,7 +20,6 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	renderNote: function(id) {
-		console.log("triggered renderNote from router")
 		var displayView = new EvernoteClone.Views.NoteDisplay({
 			model: this.notes.get(id),
 			collection: this.notes

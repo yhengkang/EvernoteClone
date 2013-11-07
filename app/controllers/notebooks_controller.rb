@@ -19,7 +19,7 @@ class NotebooksController < ApplicationController
 
 	def destroy
 		Notebook.find(params[:id]).destroy
-		render :status => 200	
+		render :json => {:head => :ok}
 	end
 
 	def index

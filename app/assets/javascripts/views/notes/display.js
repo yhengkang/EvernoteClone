@@ -16,7 +16,6 @@
 	},
 
 	updateNote: function(event) {	
-		console.log("update note");
 		event.preventDefault();	
 		var formData = $("form#note-form").serializeJSON();
 		var that = this;
@@ -33,8 +32,8 @@
 		var that = this;
 		this.model.destroy({
 			success: function() {
-				console.log("in success of deletenote");
-				var lastNoteId = that.collection.models[0].get("id");
+				//Either create a placeholder, or move the succcess methods elsewhere. to do later
+				var lastNoteId = that.collection.models[0].get("id"); 	
 				Backbone.history.navigate("notes/" + lastNoteId, {trigger: true});
 			},
 			error: function() {
