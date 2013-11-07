@@ -1,0 +1,9 @@
+
+<h3>All Notebooks</h3>
+<% notebooks.forEach(function(notebook) { %>
+	<pre data-id="<%=notebook.get("id")%>" id="notebook-item">	
+		<%=note.escape("name")%>
+	</pre>
+<% }); %>
+
+<button class="btn btn-default" id="create-notebook">New Notebook</button>

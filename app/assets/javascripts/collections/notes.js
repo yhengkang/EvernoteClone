@@ -1,4 +1,4 @@
-EvernoteClone.Collections.Notes = Backbone.Collection.extend({
+	EvernoteClone.Collections.Notes = Backbone.Collection.extend({
 	url: "/notes",
 
 	model: EvernoteClone.Models.Note,
