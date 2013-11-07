@@ -7,4 +7,5 @@ EvernoteClone::Application.routes.draw do
   get "/home", :to => "StaticPages#home"
 
   resources :notes, :only => [:create, :destroy, :show, :index, :update]
+  resources :notebooks, :only =>[:create, :destroy, :index]
 end
