@@ -5,7 +5,7 @@
 		<ul>
 			<% notes.forEach(function(note){ %>
 				<li>
-					<pre data-id="<%=note.get("id")%>" id="note-item"><%=note.escape("title")%></pre>
+					<pre data-id="<%=note.get("id")%>" id="note-item">---<%=note.escape("title")%></pre>
 				</li>
 			<% }); %>
 		</ul>

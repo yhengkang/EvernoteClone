@@ -41,9 +41,27 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
 	},
 
 	bindJqueryUi: function() {
-		var $noteItem = this.$el.find("#note-item");
+		var $noteItem = this.$el.find("pre#note-item");
 		$noteItem.draggable({
 			revert: "invalid"
+		});
+		
+		//handle dropping of notes back in here
+		var that = this;
+		var $noteList = this.$el.find("#notes-list");
+		$noteList.droppable({
+			accept: "#note-item",
+			drop: function(event, ui){
+				var noteId = ui.draggable.attr("data-id");
+				var note = EvernoteClone.Cache.Notes.get(noteId);
+				note.save({notebook_id: null},{
+					success: function() {
+						console.log("note modified");
+						ui.draggable.remove();
+						that.render();
+					}
+				});	
+			}
 		});
 		$noteItem.disableSelection();
 	}

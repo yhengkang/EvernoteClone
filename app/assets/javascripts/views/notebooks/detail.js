@@ -36,6 +36,7 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 	bindJqueryUi: function() {
 		var $notebookItem = this.$el.find("pre#notebook-name");
 		var that = this;
+		//handles dropping of note items
 		$notebookItem.droppable({
 			accept: "#note-item",
 			drop: function(event, ui){
@@ -51,6 +52,12 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 				});	
 			}
 		});
+		//handling dragging/dropping of the notes from here
+		var $noteItem = this.$el.find("pre#note-item");
+		$noteItem.draggable({
+			revert: "invalid"
+		});
+		$noteItem.disableSelection();
 	}
 
 })
