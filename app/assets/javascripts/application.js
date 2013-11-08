@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+// JQuery UI
+//= require jquery-ui-1.10.3.custom.min.js
 //= require underscore
 //= require backbone
 // Loads all Bootstrap javascripts

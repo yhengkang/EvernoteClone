@@ -3,14 +3,16 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 
 	events: {
 		"click button#delete-notebook" : "deleteNotebook",
-		"click pre#notebook-item" : "editView"
+		"dblclick #notebook-name" : "editView"
 	},
 
 	render: function() {
 		var renderedContent = this.template({
-			notebook: this.model
+			notebook: this.model,
+			notes: EvernoteClone.Cache.Notes.where({notebook_id: this.model.id})
 		});
 		this.$el.html(renderedContent);
+		this.bindJqueryUi();
 		return this;
 	},
 
@@ -29,6 +31,27 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 		});
 		//check for neccessity of swapping?
 		this.$el.html(editView.render().$el);
+	},
+
+	bindJqueryUi: function() {
+		var $notebookItem = this.$el.find("pre#notebook-name");
+		var that = this;
+		$notebookItem.droppable({
+			accept: "#note-item",
+			drop: function(event, ui){
+				var noteId = ui.draggable.attr("data-id");
+				var note = EvernoteClone.Cache.Notes.get(noteId);
+				var notebookId = that.model.get("id");
+				debugger;
+				note.save({notebook_id: notebookId},{
+					success: function() {
+						console.log("note modified");
+						ui.draggable.remove();
+						that.render();
+					}
+				});	
+			}
+		});
 	}
 
 })

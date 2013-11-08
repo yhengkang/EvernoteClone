@@ -1,4 +1,16 @@
 
-<pre class="" id="notebook-item">	
-	<%=notebook.escape("name")%>
-</pre>
+<li class="" id="notebook-item">	
+	<pre id="notebook-name"><%=notebook.escape("name")%></pre>
+	<% if(notes) { %>
+		<ul>
+			<% notes.forEach(function(note){ %>
+				<li>
+					<pre data-id="<%=note.get("id")%>" id="note-item"><%=note.escape("title")%></pre>
+				</li>
+			<% }); %>
+		</ul>
+	<% } else { %>
+		<ul>
+		</ul>
+	<% } %>
+</li>

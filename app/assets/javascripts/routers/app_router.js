@@ -30,7 +30,7 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 		this.noteDisplay.html(displayView.render().$el);
 	},
 
-	renderNotesIndex: function() {
+	renderNotesIndex: function() {		
 		var indexView = new EvernoteClone.Views.NotesIndex({
 			collection: this.notes
 		}); 	

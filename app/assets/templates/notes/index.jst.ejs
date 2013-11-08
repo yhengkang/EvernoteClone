@@ -1,9 +1,14 @@
 
-<h3>All Notes</h3>
-<% notes.forEach(function(note) { %>
-	<pre data-id="<%=note.get("id")%>" id="note-item">	
-		<%=note.escape("title")%>
-	</pre>
-<% }); %>
-
+<h3>Uncatagorized Notes</h3>
+<ul id="notes-list">
+	<% notes.forEach(function(note) { %>
+		<li>
+			<pre data-id="<%=note.get("id")%>" id="note-item"><%=note.escape("title")%></pre>
+		</li>
+	<% }); %>
+</ul>
 <button class="btn btn-default" id="create-note">New Note</button>
+
+<style>
+  ul { list-style-type: none; margin: 0; padding: 0; margin-bottom: 10px; }
+</style>

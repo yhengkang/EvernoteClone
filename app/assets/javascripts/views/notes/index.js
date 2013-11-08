@@ -2,7 +2,7 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
 	template: JST["notes/index"],
 
 	initialize: function() {
-		var events = ["add", "remove", "sync", "reset"];
+		var events = ["add", "remove", "sync", "reset", "sort"];
 		var that = this; 
 		events.forEach(function(event){
 			that.listenTo(that.collection, event, that.render)
@@ -15,10 +15,12 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
 	},
 
 	render: function() {
+		var uncatagorizedNotes = this.collection.where({notebook_id: null});
 		var renderedContent = this.template({
-			notes: this.collection
+			notes: uncatagorizedNotes
 		});
 		this.$el.html(renderedContent);
+		this.bindJqueryUi();
 		return this;
 	},
 
@@ -36,6 +38,14 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
 				Backbone.history.navigate("notes/" + newNote.get("id"), {trigger: true});
 			}
 		});
+	},
+
+	bindJqueryUi: function() {
+		var $noteItem = this.$el.find("#note-item");
+		$noteItem.draggable({
+			revert: "invalid"
+		});
+		$noteItem.disableSelection();
 	}
 
 })

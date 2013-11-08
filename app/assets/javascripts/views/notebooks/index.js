@@ -10,7 +10,8 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
 	},
 
 	events: {
-		"click button#create-notebook" : "createNotebook"
+		"click button#create-notebook" : "createNotebook",
+		"click pre#note-item" : "showNote"
 	},
 
 	render: function() {
@@ -22,10 +23,15 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
 			var detailView = new EvernoteClone.Views.NotebookDetail({
 				model: notebook
 			});
-			//somethings wrong here
-			that.$el.find("div.list").append(detailView.render().$el);
+			that.$el.find("ul#notebook-list").append(detailView.render().$el);
 		});
+		this.bindJQueryUi();
 		return this;
+	},
+
+	showNote: function(event) {
+		var noteId = $(event.currentTarget).attr("data-id")
+		Backbone.history.navigate("notes/" + noteId, {trigger: true});
 	},
 
 	createNotebook: function() {
@@ -36,6 +42,12 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
 				that.collection.add(notebook);
 			}
 		})
+	},
+
+	bindJQueryUi: function() {
+		var $notebookList = this.$el.find("#notebook-list")
+		$notebookList.sortable();
+		$notebookList.disableSelection();
 	},
 
 	addNotebookNote: function() {
