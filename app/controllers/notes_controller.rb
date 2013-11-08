@@ -1,5 +1,4 @@
 class NotesController < ApplicationController
-  wrap_parameters Note
 	#respond_to :json
 
 	def create
@@ -40,8 +39,8 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
-    # @note.notebook_id = params[:notebook_id]
-    # @note.save
+    @note.notebook_id = params[:notebook_id]
+    @note.save
     @note.update_attributes(params[:note])
     render :json => @note
   end

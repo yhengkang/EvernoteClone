@@ -42,7 +42,6 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 				var noteId = ui.draggable.attr("data-id");
 				var note = EvernoteClone.Cache.Notes.get(noteId);
 				var notebookId = that.model.get("id");
-				debugger;
 				note.save({notebook_id: notebookId},{
 					success: function() {
 						console.log("note modified");
