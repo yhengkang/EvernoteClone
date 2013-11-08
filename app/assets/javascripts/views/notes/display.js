@@ -8,6 +8,10 @@
 	},
 
 	render: function() {
+		if (!this.model) {
+			this.model = this.collection.models[0] ? this.collection.models[0] : undefined
+		}
+
 		var renderedContent = this.template({
 			note: this.model
 		});
@@ -32,14 +36,8 @@
 		var that = this;
 		this.model.destroy({
 			success: function() {
-				if (that.collection.models[0]){
-					var lastNoteId = that.collection.models[0].get("id");
-					Backbone.history.navigate("notes/" + lastNoteId, {trigger: true});
-				} else {
-					that.$el.find("form#note-form").empty();
-					Backbone.history.navigate("", {trigger: true});
-				}
-				
+				that.$el.find("form#note-form").empty();
+				Backbone.history.navigate("", {trigger: true});
 			},
 			error: function() {
 				console.log("deletion failed");

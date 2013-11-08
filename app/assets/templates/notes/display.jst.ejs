@@ -1,6 +1,8 @@
 <h3>Current Note</h3>
-<% if(note) { %>
-	<form class="well form-inline offset2 custom-form" id="note-form">
+
+
+<form class="well form-inline offset2 custom-form" id="note-form">
+	<% if(note) { %>
 		<div class="controls">
 			<label for="note_title" class="sr-only">Title</label>
 			<br>
@@ -14,5 +16,5 @@
 			<button id="update-note" class="btn btn-default">Update Note</button>
 			<button id="delete-note" class="btn btn-default">Erase</button>
 		</div>
-	</form>
-<% } %>
+	<% } %>
+</form>
