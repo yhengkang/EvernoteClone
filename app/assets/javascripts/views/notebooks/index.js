@@ -2,7 +2,7 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
 	template: JST["notebooks/index"],
 
 	initialize: function() {
-		var events = ["add", "remove", "sync", "reset"];
+		var events = ["add", "remove", "reset"];
 		var that = this;
 		events.forEach(function(event){
 			that.listenTo(that.collection, event, that.render);
@@ -10,17 +10,21 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
 	},
 
 	events: {
-		"click button#create-notebook" : "createNotebook",
-		"click button#delete-notebook" : "deleteNotebook",
-		"click button#add-notebook-note" : "addNotebookNote"
+		"click button#create-notebook" : "createNotebook"
 	},
 
 	render: function() {
-		var renderedContent = this.template({
-			notebooks: this.collection
+		var that = this;
+		this.$el.empty();
+		var renderedContent = this.template();
+		this.$el.html(renderedContent)
+		this.collection.forEach(function(notebook){
+			var detailView = new EvernoteClone.Views.NotebookDetail({
+				model: notebook
+			});
+			that.$el.append(detailView.render().$el);
 		});
-		this.$el.html(renderedContent);
-		return this;	
+		return this;
 	},
 
 	createNotebook: function() {
@@ -31,13 +35,6 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
 				that.collection.add(notebook);
 			}
 		})
-	},
-
-	deleteNotebook: function(event) {
-		var notebookId = $(event.currentTarget).attr("data-id");
-		var notebook = this.collection.get(notebookId);
-		this.collection.remove(notebook, {});
-		notebook.destroy();
 	},
 
 	addNotebookNote: function() {

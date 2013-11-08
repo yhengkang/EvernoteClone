@@ -1,0 +1,9 @@
+
+<pre class="" id="notebook-item">	
+	<%=notebook.escape("name")%>
+</pre>
+<div class="btn-group">
+  <button type="button" class="btn btn-default" data-id="<%=notebook.get("id")%>" id="delete-notebook">Delete</button>
+  <button type="button"	class="btn btn-default" data-id="<%=notebook.get("id")%>" id="edit-notebook">Edit</button>
+  <button type="button" class="btn btn-default" data-id="<%=notebook.get("id")%>" id="add-notebook-note">Add</button>
+</div>
