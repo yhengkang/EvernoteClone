@@ -2,7 +2,7 @@
 <li class="" id="notebook-item">	
 	<pre id="notebook-name"><%=notebook.escape("name")%></pre>
 	<% if(notes) { %>
-		<ul>
+		<ul id="notes-list">
 			<% notes.forEach(function(note){ %>
 				<li>
 					<pre data-id="<%=note.get("id")%>" id="note-item">---<%=note.escape("title")%></pre>
