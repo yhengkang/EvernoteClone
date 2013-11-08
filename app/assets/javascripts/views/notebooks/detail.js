@@ -23,7 +23,6 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 	},
 
 	editView: function() {
-		console.log("clicked!");
 		this.$el.empty();
 		var editView = new EvernoteClone.Views.NoteEdit({
 			model: this.model

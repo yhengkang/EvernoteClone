@@ -29,9 +29,11 @@ class NotesController < ApplicationController
 
   def index
     @notes = current_user.notes.order("updated_at DESC")
-    p @notes
     if @notes.empty?
-      @notes << Note.new(title: "Untitled Note" )
+      note = Note.new(title: "Untitled Note" )
+      note.user_id = current_user.id
+      note.save!
+      @notes << note
     end
     render :json => @notes
   end

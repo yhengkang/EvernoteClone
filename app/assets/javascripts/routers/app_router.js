@@ -15,8 +15,10 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 	renderAll: function() {
 		this.renderNotesIndex();
 		this.renderNotebooksIndex();
-		var lastNote = this.notes.models[0]	
-		this.renderNote(lastNote.get("id"));
+		var lastNote = this.notes.models[0]
+		if( lastNote ){
+			this.renderNote(lastNote.get("id"));	
+		}	
 	},
 
 	renderNote: function(id) {

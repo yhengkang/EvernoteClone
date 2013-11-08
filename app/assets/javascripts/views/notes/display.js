@@ -32,9 +32,14 @@
 		var that = this;
 		this.model.destroy({
 			success: function() {
-				//Either create a placeholder, or move the succcess methods elsewhere. to do later
-				var lastNoteId = that.collection.models[0].get("id"); 	
-				Backbone.history.navigate("notes/" + lastNoteId, {trigger: true});
+				if (that.collection.models[0]){
+					var lastNoteId = that.collection.models[0].get("id");
+					Backbone.history.navigate("notes/" + lastNoteId, {trigger: true});
+				} else {
+					that.$el.find("form#note-form").empty();
+					Backbone.history.navigate("", {trigger: true});
+				}
+				
 			},
 			error: function() {
 				console.log("deletion failed");
