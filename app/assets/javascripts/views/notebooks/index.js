@@ -14,6 +14,7 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
 	},
 
 	render: function() {
+		console.log("index render")
 		var that = this;
 		this.$el.empty();
 		var renderedContent = this.template();
@@ -22,12 +23,14 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
 			var detailView = new EvernoteClone.Views.NotebookDetail({
 				model: notebook
 			});
-			that.$el.append(detailView.render().$el);
+			//somethings wrong here
+			that.$el.find("div.list").append(detailView.render().$el);
 		});
 		return this;
 	},
 
 	createNotebook: function() {
+		console.log("Created a book");
 		var notebook = new EvernoteClone.Models.Notebook();
 		var that = this;
 		notebook.save({},{

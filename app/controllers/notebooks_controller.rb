@@ -11,7 +11,7 @@ class NotebooksController < ApplicationController
 		end
 	end
 
-	def edit
+	def update
 		@notebook = Notebook.find(params[:id])
 		@notebook.update_attributes(params[:notebook])
 		render :json => @notebook
