@@ -1,9 +1,9 @@
-EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
-	template: JST["notebooks/detail"],
+	EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
+		template: JST["notebooks/detail"],
 
 	events: {
 		"click button#delete-notebook" : "deleteNotebook",
-		"dblclick #notebook-name" : "editView",
+		"click .edit-view" : "editView",
 		"click #notebook-name" : "toggleNoteList"
 	},
 
@@ -18,6 +18,7 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 	},
 
 	toggleNoteList: function() {
+		console.log("clicked!");
 		this.$el.find("ul#notes-list").toggleClass("hidden");
 	},
 
@@ -30,11 +31,21 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 	},
 
 	editView: function() {
+		// var events = ["click button#delete-notebook", "dblclick #notebook-name", "click #notebook-name"];
+		// var that = this;
+		// events.forEach(function(event) {
+		// 	that.off(event);
+		// });
+		// this.$el.find("#notebook-name").off();
 		this.$el.empty();
 		var editView = new EvernoteClone.Views.NoteEdit({
 			model: this.model
 		});
-		//check for neccessity of swapping?
+		//need to swap//problem is with the detail view not getting removed. not the edit view.
+		// if (this._oldEditView) {
+		// 	this._oldEditView.remove();	
+		// } 
+		// this._oldEditView = editView;
 		this.$el.html(editView.render().$el);
 	},
 

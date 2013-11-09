@@ -37,7 +37,7 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 		if(this._oldNotesIndex){
 			this._oldNotesIndex.remove();
 		}
-		this._oldNotesIndex = indexView
+		this._oldNotesIndex = indexView;
 		this.notesSidebar.html(indexView.render().$el);
 	},
 

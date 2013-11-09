@@ -35,7 +35,10 @@ EvernoteClone.Views.NoteEdit = Backbone.View.extend({
 		var detailView = new EvernoteClone.Views.NotebookDetail({
 			model: this.model
 		});
-		//check for neccessity of swapping?
+		// if (this._oldDetailView) {
+		// 	this._oldDetailView.remove();
+		// }
+		// this._oldDetailView = detailView;	
 		this.$el.html(detailView.render().$el);
 	}
 

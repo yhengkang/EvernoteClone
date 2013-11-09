@@ -1,6 +1,13 @@
 
 <li class="" id="notebook-item">	
-	<pre id="notebook-name"><%=notebook.escape("name")%></pre>
+	<div class="row">
+		<div class="col-xs-9">
+			<pre id="notebook-name"><%=notebook.escape("name")%></pre>
+		</div>
+		<button type="button" class="btn btn-sm edit-view">
+			<span class="glyphicon glyphicon-pencil"></span>
+		</button>		
+	</div>
 	<% if(notes) { %>
 		<ul id="notes-list">
 			<% notes.forEach(function(note){ %>

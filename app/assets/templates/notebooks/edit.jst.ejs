@@ -1,7 +1,14 @@
-<pre class="" id="notebook-edit-item">	
-	<form class="well form-inline custom-form" id="notebook-form">
-		<input type=text name="notebook[name]" value="<%=notebook.escape("name")%>">
-		<button type="button" class="btn btn-default" id="edit-notebook">Edit</button>
-		<button type="button" class="btn btn-default" id="delete-notebook">Delete</button>
-	</form>
-</pre>
+<form class="form-inline" id="notebook-form">
+	<div class="row">
+	<div class="col-xs-8">
+		<input class="form-control" type="text" name="notebook[name]" value="<%=notebook.escape("name")%>">
+	</div>
+	<button type="button" class="btn btn-sm" id="edit-notebook">
+		<span class="glyphicon glyphicon-pencil"></span>
+	</button>
+	<button type="button" class="btn btn-sm" id="delete-notebook">
+		<span class="glyphicon glyphicon-trash"></span>
+	</button>
+	</div>
+</form>
+
