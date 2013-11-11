@@ -2,7 +2,7 @@
 	<img src="/images/CowLogo-circle.png" alt="HeiferNote" class="img-circle logo" width="100" height="100">
 	<ul class="nav nav-pills pull-right">
 		<li class="active">
-			<button>Log Out</button>
+			<%= button_to "Log Out", destroy_user_session_url, :method => :delete%>
 		</li>
 	</ul>
 </div>
