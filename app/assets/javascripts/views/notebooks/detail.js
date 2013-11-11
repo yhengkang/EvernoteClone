@@ -50,10 +50,10 @@
 	},
 
 	bindJqueryUi: function() {
-		var $notebookItem = this.$el.find("pre#notebook-name");
+		var $notebookName = this.$el.find("pre#notebook-name");
 		var that = this;
 		//handles dropping of note items
-		$notebookItem.droppable({
+		$notebookName.droppable({
 			accept: function(element){
 				//REFACTOR
 				return (element.attr("id") === "note-item" || element.attr("id") === "note-form");
@@ -73,6 +73,12 @@
 			},
 			tolerance: "pointer"
 		});
+		//allow draggable so it can be dropped in trashs
+		// var $notebookItem = this.$el.find("#notebook-item")
+		// $notebookItem.draggable({
+		// 	connectToSortable: "#notebook-list",
+		// 	revert: "invalid",
+		// });
 		//handling dragging/dropping of the notes from here
 		var $noteItem = this.$el.find("pre#note-item");
 		$noteItem.draggable({

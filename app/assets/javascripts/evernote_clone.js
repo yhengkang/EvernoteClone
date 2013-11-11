@@ -7,7 +7,7 @@ window.EvernoteClone = {
   initialize: function() {
     //Caching collection on global scale
   	var notes = EvernoteClone.Cache.Notes = new EvernoteClone.Collections.Notes();
-    var notebooks = new EvernoteClone.Collections.Notebooks();
+    var notebooks = EvernoteClone.Cache.Notebooks = new EvernoteClone.Collections.Notebooks();
   	notes.fetch({
   		success: function() { 
         notebooks.fetch({
