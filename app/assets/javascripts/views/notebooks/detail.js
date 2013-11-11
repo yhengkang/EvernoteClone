@@ -59,7 +59,7 @@
 				return (element.attr("id") === "note-item" || element.attr("id") === "note-form");
 			},
 			drop: function(event, ui){
-				console.log("dropped!");
+				console.log("dropped!");	
 				var noteId = ui.draggable.attr("data-id");
 				var note = EvernoteClone.Cache.Notes.get(noteId);
 				var notebookId = that.model.get("id");

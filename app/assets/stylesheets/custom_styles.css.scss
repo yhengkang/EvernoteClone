@@ -20,3 +20,14 @@ body {
 	margin-left: 10px;
 	margin-bottom: 10px;
 }
+
+.trashcan {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100px;
+	height: 100px;
+	margin-left: 100px;
+	margin-bottom: 100px;
+	background-color: grey;	
+}

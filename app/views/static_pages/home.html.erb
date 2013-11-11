@@ -13,3 +13,41 @@
 	<div class="col-md-3" style="background: " id="notes-sidebar"></div>
 	<div class="col-md-6" style="background: " id="note-display"></div>
 </div>
+
+<div class="trashcan">
+	trashcan
+</div>
+
+<script>
+	$(function(){
+		var $trashcan = $(this).find(".trashcan");
+		// console.log($trashcan);
+		$trashcan.droppable({
+			accept: function(element){
+				var accepted = false;
+				var acceptableIds = ["note-item", "note-form"]
+				var elementId = element.attr("id");
+				acceptableIds.forEach(function(id){
+					if(elementId === id){
+						accepted = true;
+					}
+				});
+				return accepted;
+			},
+
+			drop: function(event, ui){
+				var itemType = ui.draggable.attr("id");
+				var itemId = ui.draggable.attr("data-id");
+
+				var item = EvernoteClone.Cache.Notes.get(itemId)
+				item.destroy({
+					success: function() {
+						ui.draggable.remove();
+					}
+				})
+
+			},
+			tolerance: "pointer"
+		});
+	});
+</script>
