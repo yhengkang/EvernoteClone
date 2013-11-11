@@ -3,8 +3,10 @@
 	template: JST["notes/display"],
 
 	events: {
-		"click #update-note" : "updateNote",
-		"click #delete-note": "deleteNote"
+		// "click #update-note" : "updateNote",
+		"click #delete-note": "deleteNote",
+		"keyup input#note_title" : "updateTimer",
+		"keyup textarea#note_content" : "updateTimer"
 	},
 
 	render: function() {
@@ -19,16 +21,35 @@
 		return this;
 	},
 
-	updateNote: function(event) {	
-		event.preventDefault();	
-		var formData = $("form#note-form").serializeJSON();
+	updateNote: function(formData) {	
+		// event.preventDefault();	
+		console.log("updated note")
+		//problem is formData not being serialized a the right time.
+		
 		var that = this;
-
 		this.model.save(formData, {
 			success: function() {
 				that.collection.sort();		
 			}
 		});
+	},
+
+	updateTimer: function(timeDelay) {
+		// console.log($(event.srcElement).attr("id"));
+		console.log("timer created");
+		if ($(event.srcElement).attr("id") === "note_title") {
+			var timeDelay = 10;
+		} else {
+			var timeDelay = 2000;
+		}
+
+		if(this._timerId){
+			window.clearTimeout(this._timerId);
+		}
+		//form data is now compiled each time the timer is created
+		var formData = $("form#note-form").serializeJSON();
+		this._timerId = window.setTimeout(this.updateNote.bind(this), timeDelay, formData);
+		console.log(this._timerId);
 	},
 
 	deleteNote: function(event) {
