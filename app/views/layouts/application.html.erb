@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>EvernoteClone</title>
+  <title>HeiferNote</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
 
 <%= yield %>
-
-<div class="container">
-	<div class="col-md-3" style="background: " id="notebooks-sidebar"></div>
-	<div class="col-md-3" style="background: " id="notes-sidebar"></div>
-	<div class="col-md-6" style="background: " id="note-display"></div>
-</div>
 
 </body>
 </html>

@@ -1,13 +1,47 @@
 
-<h1> Project in Progress.. </h1>
-<br>
+<head>
+	<link href="jumbotron-narrow.css" rel="stylesheet">
+</head>
 
-	
-<% if user_signed_in? %>
-	<%= button_to "Log Out", destroy_user_session_url, :method => :delete%>
-<% else %>
-	<a href="<%=new_user_registration_path%>">Sign Up</a>
-	<br>
-	<a href="<%=new_user_session_path%>">Sign In</a>
-	<br>
-<% end %>	
+<div class="container">
+	<div class="header">
+		<ul class="nav nav-pills pull-right">
+			<li class="active">
+				<a href="<%=new_user_registration_path%>">Sign Up</a>
+			</li>
+			<li>
+				<a href="<%=new_user_session_path%>">Sign In</a>
+			</li>
+		</ul>
+		<div class="logo">
+			<img src="/images/CowLogo-circle.png" alt="HeiferNote" class="img-circle logo" width="100" height="100">
+		</div>
+	</div>
+
+	<div class="jumbotron">
+		<h1>Welcome to HeiferNote</h1>
+		<p class="lead">
+			For when evernote just doesn't seem to have enough cows.
+		</p>
+	</div>
+
+	<div class="row marketing">
+		<div class="col-lg-6">
+			<h4>Aaron Sullivan</h4>
+			<p>
+				"Finally, a note app that gets me..Cows are a must!"
+			</p>
+			<h4>Danielle Levinson</h4>
+			<p>
+				"This note taking app is udder-ly fantastic!"
+			</p>
+	</div>
+	<div class="row marketing">
+		<div class="col-lg-6">
+			<h4>Ryan Newton</h4>
+			<p>
+				"Such snappy interface, and so colorful! This app is.. well-done."
+			</p>
+		</div>
+	</div>
+</div>

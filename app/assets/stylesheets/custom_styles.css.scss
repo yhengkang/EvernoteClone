@@ -6,6 +6,17 @@
 // }
 
 body {
-	background: url('/assets/Background-1-grey	.png');
+	background: url('/assets/Background-1-grey.png');
 	background-repeat: no-repeat;
+}
+
+.home-page-div {
+	max-width: 1460px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.logo {
+	margin-left: 10px;
+	margin-bottom: 10px;
 }

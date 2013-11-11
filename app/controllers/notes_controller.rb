@@ -27,6 +27,7 @@ class NotesController < ApplicationController
   end
 
   def index
+    p current_user
     @notes = current_user.notes.order("updated_at DESC")
     if @notes.empty?
       note = Note.new(title: "Untitled Note" )
