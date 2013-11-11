@@ -27,7 +27,7 @@
 				var accepted = false;
 				var acceptableIds = ["note-item", "note-form", "notebook-item"]
 				var elementId = element.attr("id");
-				// handles when notebook items are dropped
+				// handles when notebook items are dropped REFACTOR
 				if (elementId === undefined) {
 					elementId = $(element.find("li")[0]).attr("id")
 				}
@@ -44,7 +44,7 @@
 				var itemType = ui.draggable.attr("id");
 				var itemId = ui.draggable.attr("data-id");
 
-
+				//handles notebook items REFACTOR
 				if (itemType === undefined || itemId === undefined){
 					itemType = $(ui.draggable.find("li")[0]).attr("id");
 					itemId = $(ui.draggable.find("li")[0]).attr("data-id");

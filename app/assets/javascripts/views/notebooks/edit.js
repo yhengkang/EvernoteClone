@@ -3,7 +3,7 @@ EvernoteClone.Views.NoteEdit = Backbone.View.extend({
 
 	events: {
 		"click button#edit-notebook" : "editNotebook",
-		"click button#delete-notebook" : "deleteNotebook"
+		"click button#detail-notebook" : "detailView"
 	},
 
 	render: function() {

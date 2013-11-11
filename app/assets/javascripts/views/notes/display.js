@@ -4,7 +4,7 @@
 
 	events: {
 		// "click #update-note" : "updateNote",
-		"click #delete-note": "deleteNote",
+		// "click #delete-note": "deleteNote",
 		"keyup input#note_title" : "updateTimer",
 		"keyup textarea#note_content" : "updateTimer"
 	},

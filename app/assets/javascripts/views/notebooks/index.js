@@ -50,9 +50,7 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
 
 	bindJQueryUi: function() {
 		var $notebookList = this.$el.find("#notebook-list")
-		$notebookList.sortable({
-			helper: "clone"
-		});
+		$notebookList.sortable();
 		$notebookList.disableSelection();
 	}
 	
