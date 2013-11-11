@@ -54,8 +54,12 @@
 		var that = this;
 		//handles dropping of note items
 		$notebookItem.droppable({
-			accept: "#note-item",
+			accept: function(element){
+				//REFACTOR
+				return (element.attr("id") === "note-item" || element.attr("id") === "note-form");
+			},
 			drop: function(event, ui){
+				console.log("dropped!");
 				var noteId = ui.draggable.attr("data-id");
 				var note = EvernoteClone.Cache.Notes.get(noteId);
 				var notebookId = that.model.get("id");
@@ -66,7 +70,8 @@
 						that.render();
 					}
 				});	
-			}
+			},
+			tolerance: "pointer"
 		});
 		//handling dragging/dropping of the notes from here
 		var $noteItem = this.$el.find("pre#note-item");

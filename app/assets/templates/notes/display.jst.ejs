@@ -1,7 +1,6 @@
 <h3>Current Note</h3>
 
-
-<form class="well form-inline offset2 custom-form" id="note-form">
+<form class="well form-inline offset2 custom-form" id="note-form" data-id="<%=note.get("id")%>">
 	<% if(note) { %>
 		<div class="controls">
 			<label for="note_title" class="sr-only">Title</label>

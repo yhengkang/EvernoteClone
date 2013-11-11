@@ -18,14 +18,12 @@
 			note: this.model
 		});
 		this.$el.html(renderedContent);
+		this.bindJqueryUi();
 		return this;
 	},
 
 	updateNote: function(formData) {	
-		// event.preventDefault();	
 		console.log("updated note")
-		//problem is formData not being serialized a the right time.
-		
 		var that = this;
 		this.model.save(formData, {
 			success: function() {
@@ -35,7 +33,6 @@
 	},
 
 	updateTimer: function(timeDelay) {
-		// console.log($(event.srcElement).attr("id"));
 		console.log("timer created");
 		if ($(event.srcElement).attr("id") === "note_title") {
 			var timeDelay = 10;
@@ -64,6 +61,13 @@
 				console.log("deletion failed");
 			},
 			wait: true
+		});
+	},
+
+	bindJqueryUi: function() {
+		var $noteDisplay = this.$el.find("form#note-form");
+		$noteDisplay.draggable({
+			revert: "invalid"
 		});
 	}
 
