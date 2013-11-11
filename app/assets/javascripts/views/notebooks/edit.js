@@ -25,10 +25,10 @@ EvernoteClone.Views.NoteEdit = Backbone.View.extend({
 		});
 	},
 
-	deleteNotebook: function(event) {
-		event.preventDefault();
-		this.model.destroy();
-	},
+	// deleteNotebook: function(event) {
+	// 	event.preventDefault();
+	// 	this.model.destroy();
+	// },
 
 	detailView: function(){
 		this.$el.empty();

@@ -2,7 +2,6 @@
 		template: JST["notebooks/detail"],
 
 	events: {
-		"click button#delete-notebook" : "deleteNotebook",
 		"click .edit-view" : "editView",
 		"click #notebook-name" : "toggleNoteList"
 	},
@@ -20,14 +19,6 @@
 	toggleNoteList: function() {
 		console.log("clicked!");
 		this.$el.find("ul#notes-list").toggleClass("hidden");
-	},
-
-	deleteNotebook: function(event) {
-		this.model.destroy({
-			succcess: function() {
-				console.log("notebook destroyed");	
-			}
-		})
 	},
 
 	editView: function() {
@@ -73,12 +64,6 @@
 			},
 			tolerance: "pointer"
 		});
-		//allow draggable so it can be dropped in trashs
-		// var $notebookItem = this.$el.find("#notebook-item")
-		// $notebookItem.draggable({
-		// 	connectToSortable: "#notebook-list",
-		// 	revert: "invalid",
-		// });
 		//handling dragging/dropping of the notes from here
 		var $noteItem = this.$el.find("pre#note-item");
 		$noteItem.draggable({

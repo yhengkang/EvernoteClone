@@ -3,8 +3,6 @@
 	template: JST["notes/display"],
 
 	events: {
-		// "click #update-note" : "updateNote",
-		// "click #delete-note": "deleteNote",
 		"keyup input#note_title" : "updateTimer",
 		"keyup textarea#note_content" : "updateTimer"
 	},
@@ -47,21 +45,6 @@
 		var formData = $("form#note-form").serializeJSON();
 		this._timerId = window.setTimeout(this.updateNote.bind(this), timeDelay, formData);
 		console.log(this._timerId);
-	},
-
-	deleteNote: function(event) {
-		event.preventDefault();
-		var that = this;
-		this.model.destroy({
-			success: function() {
-				that.$el.find("form#note-form").empty();
-				Backbone.history.navigate("", {trigger: true});
-			},
-			error: function() {
-				console.log("deletion failed");
-			},
-			wait: true
-		});
 	},
 
 	bindJqueryUi: function() {

@@ -21,7 +21,6 @@
 <script>
 	$(function(){
 		var $trashcan = $(this).find(".trashcan");
-		// console.log($trashcan);
 		$trashcan.droppable({
 			accept: function(element){
 				var accepted = false;
@@ -31,7 +30,7 @@
 				if (elementId === undefined) {
 					elementId = $(element.find("li")[0]).attr("id")
 				}
-				console.log(elementId);
+				
 				acceptableIds.forEach(function(id){
 					if(elementId === id){
 						accepted = true;
