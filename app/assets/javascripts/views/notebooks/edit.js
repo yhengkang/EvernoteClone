@@ -3,7 +3,7 @@ EvernoteClone.Views.NoteEdit = Backbone.View.extend({
 
 	events: {
 		"click button#edit-notebook" : "editNotebook",
-		"click button#detail-notebook" : "detailView"
+	// 	"click button#detail-notebook" : "detailView"
 	},
 
 	render: function() {
@@ -20,7 +20,6 @@ EvernoteClone.Views.NoteEdit = Backbone.View.extend({
 		var formData = $("#notebook-form").serializeJSON();
 		this.model.save(formData, {
 			success: function() {
-				that.detailView();
 			}
 		});
 	},

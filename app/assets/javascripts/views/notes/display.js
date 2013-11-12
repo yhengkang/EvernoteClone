@@ -28,7 +28,6 @@
 	},
 
 	updateNote: function(formData) {
-		console.log("updated note");	
 		var that = this;
 		this.model.save(formData, {
 			success: function() {
@@ -38,7 +37,6 @@
 	},
 
 	updateTimer: function(timeDelay) {
-		console.log("timer created");
 		if ($(event.srcElement).attr("id") === "note_title") {
 			var timeDelay = 10;
 		} else {
@@ -50,9 +48,7 @@
 		}
 		//form data is now compiled each time the timer is created
 		var formData = $("form#note-form").serializeJSON();
-		console.log(formData);
 		this._timerId = window.setTimeout(this.updateNote.bind(this), timeDelay, formData);
-		console.log(this._timerId);
 	},
 
 	createTag: function(event) {

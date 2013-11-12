@@ -1,9 +1,14 @@
-	EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
-		template: JST["notebooks/detail"],
+EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
+	template: JST["notebooks/detail"],
+
+	initialize: function() {
+		this.listenTo(this.model, "sync", this.render)
+	},
 
 	events: {
 		"click .edit-view" : "editView",
-		"click #notebook-name" : "toggleNoteList"
+		"click .notebook-name" : "toggleNoteList",
+		"click button#detail-notebook" : "render"
 	},
 
 	render: function() {
@@ -22,21 +27,10 @@
 	},
 
 	editView: function() {
-		// var events = ["click button#delete-notebook", "dblclick #notebook-name", "click #notebook-name"];
-		// var that = this;
-		// events.forEach(function(event) {
-		// 	that.off(event);
-		// });
-		// this.$el.find("#notebook-name").off();
 		this.$el.empty();
 		var editView = new EvernoteClone.Views.NoteEdit({
 			model: this.model
 		});
-		//need to swap//problem is with the detail view not getting removed. not the edit view.
-		// if (this._oldEditView) {
-		// 	this._oldEditView.remove();	
-		// } 
-		// this._oldEditView = editView;
 		this.$el.html(editView.render().$el);
 	},
 
@@ -50,13 +44,11 @@
 				return (element.attr("id") === "note-item" || element.attr("id") === "note-form");
 			},
 			drop: function(event, ui){
-				console.log("dropped!");	
 				var noteId = ui.draggable.attr("data-id");
 				var note = EvernoteClone.Cache.Notes.get(noteId);
 				var notebookId = that.model.get("id");
 				note.save({notebook_id: notebookId},{
 					success: function() {
-						console.log("note modified");
 						ui.draggable.remove();
 						that.render();
 					}

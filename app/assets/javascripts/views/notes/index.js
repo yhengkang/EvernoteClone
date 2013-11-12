@@ -54,7 +54,6 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
 				var note = EvernoteClone.Cache.Notes.get(noteId);
 				note.save({notebook_id: null},{
 					success: function() {
-						console.log("note modified");
 						ui.draggable.remove();
 						that.render();
 					}
