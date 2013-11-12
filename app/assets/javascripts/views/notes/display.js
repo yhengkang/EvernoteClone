@@ -15,19 +15,20 @@
 		var renderedContent = this.template({
 			note: this.model
 		});
+
 		this.$el.html(renderedContent);
 
 		var tagsIndex = new EvernoteClone.Views.TagsIndex({
 			collection: this.model._tags
 		});
-
 		this.$el.find("div.controls").append(tagsIndex.render().$el);
 
 		this.bindJqueryUi();
 		return this;
 	},
 
-	updateNote: function(formData) {	
+	updateNote: function(formData) {
+		console.log("updated note");	
 		var that = this;
 		this.model.save(formData, {
 			success: function() {
@@ -66,7 +67,7 @@
 		}
 		var newTag = new EvernoteClone.Models.Tag();
 		newTag.save(tagData, {
-			success: function() {
+			success: function() {	
 				that.model._tags.add(newTag);
 				that.$el.find("input#tag_name").val("");
 				console.log("tag saved!");

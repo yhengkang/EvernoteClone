@@ -7,8 +7,9 @@ EvernoteClone.Models.Note = Backbone.Model.extend({
 		if( !this._tags ){
 			this._tags = new EvernoteClone.Collections.Tags();
 		}
-
-		this._tags.reset(resp.tags);
+		if (resp.tags) {
+			this._tags.reset(resp.tags);	
+		}
 		delete resp.tags;
 		return resp;
 	}
