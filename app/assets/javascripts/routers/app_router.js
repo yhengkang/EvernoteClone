@@ -16,6 +16,7 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 		this.renderNotesIndex();
 		this.renderNotebooksIndex();
 		this.renderNote();
+		this.renderSearch();
 	},
 
 	renderNote: function(id) {
@@ -50,6 +51,10 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 		}
 		this._oldNotebooksIndex = indexView
 		this.notebooksSidebar.html(indexView.render().$el);
-	}
+	},
 
+	renderSearch: function() {
+		var searchView = new EvernoteClone.Views.TagSearch();
+		this.notebooksSidebar.append(searchView.render().$el);
+	}
 });

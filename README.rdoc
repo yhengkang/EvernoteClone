@@ -3,11 +3,12 @@ Project to clone Evernote
 
 == Implemented Features ==
 -Basic user authoriziation
-
-== Future Features ==
 -Adding/deleting notes
 -Adding/deleting notebooks
 -Display notes of a notebook
 -Adding/deleting tags
 -Search by tags
+
+== Future Features ==
+-Bug fixes
 
