@@ -4,7 +4,8 @@
 
 	events: {
 		"keyup input#note_title" : "updateTimer",
-		"keyup textarea#note_content" : "updateTimer"
+		"keyup textarea#note_content" : "updateTimer",
+		"click button#create-tag" : "createTag"
 	},
 
 	render: function() {
@@ -45,6 +46,17 @@
 		var formData = $("form#note-form").serializeJSON();
 		this._timerId = window.setTimeout(this.updateNote.bind(this), timeDelay, formData);
 		console.log(this._timerId);
+	},
+
+	createTag: function(event) {
+		event.preventDefault();
+		var tagData = $("form#tag-form").serializeJSON();
+		var newTag = new EvernoteClone.Models.Tag();
+		newTag.save(tagData, {
+			success: function() {
+				console.log("tag saved!");
+			}
+		});
 	},
 
 	bindJqueryUi: function() {

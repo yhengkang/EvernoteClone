@@ -8,4 +8,5 @@ EvernoteClone::Application.routes.draw do
 
   resources :notes, :only => [:create, :destroy, :show, :index, :update]
   resources :notebooks, :only =>[:create, :destroy, :index, :update]
+  resources :tags, :only => [:create, :destroy]
 end

@@ -16,3 +16,9 @@
 		</div>
 	<% } %>
 </form>
+
+<form class="well form-inline offset2 custom-form" id="tag-form">
+	<input type="hidden" name="tag[note_id]" value="<%=note.get("id")%>">
+	<input class="form-control" type="text" name="tag[name]" placeholder="Untitled Tag">
+	<button id="create-tag">Create Tag</button>
+</form>	

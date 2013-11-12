@@ -3,5 +3,6 @@ class Note < ActiveRecord::Base
   validates :user_id, :presence => true
 
   belongs_to :notebook
-
+  has_many :tags, :dependent => :destroy
+  
 end
