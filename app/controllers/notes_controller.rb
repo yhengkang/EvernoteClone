@@ -27,15 +27,14 @@ class NotesController < ApplicationController
   end
 
   def index
-    p current_user
-    @notes = current_user.notes.order("updated_at DESC")
+    @notes = current_user.notes.order("updated_at DESC").includes(:tags)
     if @notes.empty?
       note = Note.new(title: "Untitled Note" )
       note.user_id = current_user.id
       note.save!
       @notes << note
     end
-    render :json => @notes
+    render :json => @notes, :include => :tags
   end
 
   def update

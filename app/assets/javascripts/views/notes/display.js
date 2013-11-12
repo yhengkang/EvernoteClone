@@ -12,17 +12,22 @@
 		if (!this.model) {
 			this.model = this.collection.models[0] ? this.collection.models[0] : undefined
 		}
-
 		var renderedContent = this.template({
 			note: this.model
 		});
 		this.$el.html(renderedContent);
+
+		var tagsIndex = new EvernoteClone.Views.TagsIndex({
+			collection: this.model._tags
+		});
+
+		this.$el.find("div.controls").append(tagsIndex.render().$el);
+
 		this.bindJqueryUi();
 		return this;
 	},
 
 	updateNote: function(formData) {	
-		console.log("updated note")
 		var that = this;
 		this.model.save(formData, {
 			success: function() {
@@ -44,16 +49,26 @@
 		}
 		//form data is now compiled each time the timer is created
 		var formData = $("form#note-form").serializeJSON();
+		console.log(formData);
 		this._timerId = window.setTimeout(this.updateNote.bind(this), timeDelay, formData);
 		console.log(this._timerId);
 	},
 
 	createTag: function(event) {
 		event.preventDefault();
-		var tagData = $("form#tag-form").serializeJSON();
+		var that = this;
+		//nested form doesnt work, nest our own attributes
+		var tagData = {
+			tag: {
+				name: this.$el.find("input#tag_name").val(),
+				note_id: this.model.get("id")
+			}
+		}
 		var newTag = new EvernoteClone.Models.Tag();
 		newTag.save(tagData, {
 			success: function() {
+				that.model._tags.add(newTag);
+				that.$el.find("input#tag_name").val("");
 				console.log("tag saved!");
 			}
 		});
