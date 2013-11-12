@@ -9,24 +9,26 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
 		});
 	},
 
-	events: {
-		"click #note-item" : "showNote",	
+	events: {	
 		"click #create-note" : "createNote"
 	},
 
 	render: function() {
-		var uncatagorizedNotes = this.collection.where({notebook_id: null});
-		var renderedContent = this.template({
-			notes: uncatagorizedNotes
-		});
+		var that = this;
+		var uncategorizedNotes = this.collection.where({notebook_id: null});
+		var renderedContent = this.template();
 		this.$el.html(renderedContent);
+		//where returns an arry of models
+		if(uncategorizedNotes.length > 0) {
+			uncategorizedNotes.forEach(function(note){
+				var detailView = new EvernoteClone.Views.NoteDetail({
+					model: note
+				});
+				that.$el.find("ul#notes-list").append(detailView.render().$el);
+			});
+		}
 		this.bindJqueryUi();
 		return this;
-	},
-
-	showNote: function(event) {
-		var noteId = $(event.currentTarget).attr("data-id")
-		Backbone.history.navigate("notes/" + noteId, {trigger: true});
 	},
 
 	createNote: function() {
@@ -41,10 +43,6 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
 	},
 
 	bindJqueryUi: function() {
-		var $noteItem = this.$el.find("pre#note-item");
-		$noteItem.draggable({
-			revert: "invalid"
-		});
 		
 		//handle dropping of notes back in here
 		var that = this;
@@ -63,7 +61,6 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
 				});	
 			}
 		});
-		$noteItem.disableSelection();
 	}
 
 })
