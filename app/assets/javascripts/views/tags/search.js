@@ -9,6 +9,13 @@ EvernoteClone.Views.TagSearch = Backbone.View.extend({
 		"submit form#tag-search" : "searchByTag"
 	},
 
+	// to keep track of search after re-render
+	// -keep tagname searched as a attribute
+	// -render by old attribute each time view is rendered
+	// -refactor render function so it renders by search tag name
+	// 		-have render function render only search bar if nothing is provided
+
+	
 	render: function(searchResult) {
 		var that = this;
 		this.$el.empty();

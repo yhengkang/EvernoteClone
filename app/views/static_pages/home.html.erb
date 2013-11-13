@@ -2,7 +2,11 @@
 	<img src="/images/CowLogo-circle.png" alt="HeiferNote" class="img-circle logo" width="100" height="100">
 	<ul class="nav nav-pills pull-right">
 		<li class="active">
-			<%= button_to "Log Out", destroy_user_session_url, :method => :delete%>
+			<form action="<%=destroy_user_session_url%>" method="post">
+				<input type="hidden" name="_method" value="DELETE">
+				<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+				<button class="btn btn-default">Log Out</button>
+			</form>
 		</li>
 	</ul>
 </div>
