@@ -1,3 +1,5 @@
-<li id="<%=tag.escape("id")%>">
-	<%=tag.escape("name")%> <button id="delete-tag" data-id="<%=tag.escape("id")%>">Delete</button>
-</li>
+<div class="inline-block">
+	<button class="delete-tag btn btn-default btn-xs" data-id="<%=tag.escape("id")%>">
+		<span class="glyphicon glyphicon-tag"></span> <%=tag.escape("name")%>
+	</button>
+</div>

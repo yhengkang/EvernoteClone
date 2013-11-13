@@ -2,8 +2,7 @@ EvernoteClone.Views.NoteEdit = Backbone.View.extend({
 	template: JST["notebooks/edit"],
 
 	events: {
-		"click button#edit-notebook" : "editNotebook",
-	// 	"click button#detail-notebook" : "detailView"
+		"click button#edit-notebook" : "editNotebook"
 	},
 
 	render: function() {
@@ -23,23 +22,5 @@ EvernoteClone.Views.NoteEdit = Backbone.View.extend({
 			}
 		});
 	},
-
-	// deleteNotebook: function(event) {
-	// 	event.preventDefault();
-	// 	this.model.destroy();
-	// },
-
-	detailView: function(){
-		this.$el.empty();
-		var detailView = new EvernoteClone.Views.NotebookDetail({
-			model: this.model
-		});
-		// if (this._oldDetailView) {
-		// 	this._oldDetailView.remove();
-		// }
-		// this._oldDetailView = detailView;	
-		this.$el.html(detailView.render().$el);
-	}
-
 
 });

@@ -5,7 +5,8 @@
 	events: {
 		"keyup input#note_title" : "updateTimer",
 		"keyup textarea#note_content" : "updateTimer",
-		"click button#create-tag" : "createTag"
+		"click button#create-tag" : "createTag",
+		"submit input#tag_name" : "createTag"
 	},
 
 	render: function() {
@@ -17,7 +18,7 @@
 		});
 
 		this.$el.html(renderedContent);
-
+		//render tags if there are any		
 		var tagsIndex = new EvernoteClone.Views.TagsIndex({
 			collection: this.model._tags
 		});

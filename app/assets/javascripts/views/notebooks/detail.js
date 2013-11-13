@@ -6,7 +6,7 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 	},
 
 	events: {
-		"click .edit-view" : "editView",
+		"dblclick .notebook-name" : "editView",
 		"click .notebook-name" : "toggleNoteList",
 		"click button#detail-notebook" : "render"
 	},
@@ -35,7 +35,7 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 	},
 
 	bindJqueryUi: function() {
-		var $notebookName = this.$el.find("pre#notebook-name");
+		var $notebookName = this.$el.find("pre.notebook-name");
 		var that = this;
 		//handles dropping of note items
 		$notebookName.droppable({

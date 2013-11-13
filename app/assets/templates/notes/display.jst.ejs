@@ -14,9 +14,13 @@
 			 placeholder="Write here!"><%=note.escape("content")%></textarea>
 			<br>
 		</div>
+
 		<input id="tag_note_id" type="hidden" name="tag[note_id]" value="<%=note.get("id")%>">
-		<input class="form-control" id="tag_name" type="text" name="tag[name]" placeholder="Untitled Tag">
-		<button id="create-tag">Create Tag</button>	
+		<div class="form-group">
+			<input class="form-control input-sm" id="tag_name" type="text" name="tag[name]" placeholder="Untitled Tag">
+			<button class="btn btn-default btn-sm" id="create-tag">Create Tag</button>
+		</div>
+
 	<% } %>
 </form>
 

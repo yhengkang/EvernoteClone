@@ -31,3 +31,14 @@ body {
 	margin-bottom: 100px;
 	background-color: grey;	
 }
+
+input.input-sm#tag_name {
+	width: 60%;
+	float: left;
+}
+
+button.btn-sm#create-tag {
+	width: 30%;
+	float: left;
+}
+

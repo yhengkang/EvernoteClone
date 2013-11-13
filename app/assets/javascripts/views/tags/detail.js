@@ -1,8 +1,12 @@
 EvernoteClone.Views.TagDetail = Backbone.View.extend({
 	template: JST["tags/detail"],
 
+	initialize: function() {
+		this.$el = $("<li></li>")
+	},
+
 	events: {
-		"click button#delete-tag" : "deleteTag"
+		"click button.delete-tag" : "deleteTag"
 	},
 
 	render: function() {

@@ -5,7 +5,7 @@ class TagsController < ApplicationController
 		if @tag.save
 			render :json => @tag
 		else
-			render :json => @tag.errors.full_messages
+			render :status => 422
 		end
 	end
 

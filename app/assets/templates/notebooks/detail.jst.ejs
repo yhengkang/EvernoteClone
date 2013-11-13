@@ -1,14 +1,6 @@
 
 <li id="notebook-item" data-id="<%=notebook.get("id")%>">	
-
-	<div class="row">
-		<div class="col-xs-9">
-			<pre class="notebook-name"><%=notebook.escape("name")%></pre>
-		</div>
-		<button type="button" class="btn btn-sm edit-view">
-			<span class="glyphicon glyphicon-pencil"></span>
-		</button>		
-	</div>
+	<pre class="notebook-name"><span class="glyphicon glyphicon-book"></span>  <%=notebook.escape("name")%></pre>
 	<% if(notes) { %>
 		<ul id="notes-list">
 			<% notes.forEach(function(note){ %>
@@ -22,3 +14,4 @@
 		</ul>
 	<% } %>
 </li>
+
