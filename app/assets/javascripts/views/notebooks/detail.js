@@ -2,7 +2,8 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 	template: JST["notebooks/detail"],
 
 	initialize: function() {
-		this.listenTo(this.model, "sync", this.render)
+		this.listenTo(this.model, "sync", this.render),
+		this.$el = $("<li></li>")
 	},
 
 	events: {
@@ -16,6 +17,10 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 		var renderedContent = this.template({
 			notebook: this.model,
 		});
+		//set the li item to the correct id and class
+		this.$el.addClass("notebook-item");
+		this.$el.attr("data-id", this.model.get("id"));
+		//puts rendered content into the li item
 		this.$el.html(renderedContent);
 		
 		var notes = EvernoteClone.Cache.Notes.where({notebook_id: this.model.id})
@@ -46,10 +51,10 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 	},
 
 	bindJqueryUi: function() {
-		var $notebookName = this.$el.find("pre.notebook-name");
+		var $notebookItem = this.$el.find("pre.notebook-item");
 		var that = this;
 		//handles dropping of note items
-		$notebookName.droppable({
+		$notebookItem.droppable({
 			accept: function(element){
 				//REFACTOR
 				return (element.is(".note-item, .note-display") );
