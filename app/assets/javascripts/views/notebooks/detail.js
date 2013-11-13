@@ -52,7 +52,7 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 		$notebookName.droppable({
 			accept: function(element){
 				//REFACTOR
-				return (element.hasClass("note-item") || element.hasClass("note-display") );
+				return (element.is(".note-item, .note-display") );
 			},
 			drop: function(event, ui){
 				var noteId = ui.draggable.attr("data-id");
