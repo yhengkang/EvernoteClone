@@ -5,8 +5,7 @@
 	events: {
 		"keyup input#note_title" : "updateTimer",
 		"keyup textarea#note_content" : "updateTimer",
-		"click button#create-tag" : "createTag",
-		"submit input#tag_name" : "createTag"
+		"submit form#tag-form" : "createTag"
 	},
 
 	render: function() {
@@ -55,13 +54,7 @@
 	createTag: function(event) {
 		event.preventDefault();
 		var that = this;
-		//nested form doesnt work, nest our own attributes
-		var tagData = {
-			tag: {
-				name: this.$el.find("input#tag_name").val(),
-				note_id: this.model.get("id")
-			}
-		}
+		var tagData = $(event.currentTarget).serializeJSON();
 		var newTag = new EvernoteClone.Models.Tag();
 		newTag.save(tagData, {
 			success: function() {	
@@ -73,7 +66,7 @@
 	},
 
 	bindJqueryUi: function() {
-		var $noteDisplay = this.$el.find("form#note-form");
+		var $noteDisplay = this.$el.find("div.note-display");
 		$noteDisplay.draggable({
 			revert: "invalid"
 		});
