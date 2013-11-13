@@ -1,30 +1,32 @@
 <h3>Current Note</h3>
 
-<div class="note-display">
+<% if(note) { %>
 
-<form class="well form-inline offset2 custom-form" id="note-form" data-id="<%=note.get("id")%>">
-	<% if(note) { %>
-		<div class="controls">
-			<label for="note_title" class="sr-only">Title</label>	
-			<br>
-			<input class="form-control" type="text" name="note[title]" 
-						 value="<%=note.escape("title")%>" id="note_title" placeholder="Untitled Note">
-			<br>
-			<label for="note_content" class="sr-only">Content</label>
-			<br>
-			<textarea class="form-control" rows="15" name="note[content]" id="note_content" 
-			 placeholder="Write here!"><%=note.escape("content")%></textarea>
-			<br>
+	<div class="note-display" data-id="<%=note.get("id")%>">
+	<form class="well form-inline offset2 custom-form" id="note-form">
+		
+			<div class="controls">
+				<label for="note_title" class="sr-only">Title</label>	
+				<br>
+				<input class="form-control" type="text" name="note[title]" 
+							 value="<%=note.escape("title")%>" id="note_title" placeholder="Untitled Note">
+				<br>
+				<label for="note_content" class="sr-only">Content</label>
+				<br>
+				<textarea class="form-control" rows="15" name="note[content]" id="note_content" 
+				 placeholder="Write here!"><%=note.escape("content")%></textarea>
+				<br>
+			</div>
+		
+	</form>
+
+	<form class="well form-inline offset2 custom-form" id="tag-form">
+		<input id="tag_note_id" type="hidden" name="tag[note_id]" value="<%=note.get("id")%>">
+		<div class="form-group">
+			<input class="form-control input-sm" id="tag_name" type="text" name="tag[name]" placeholder="Untitled Tag">
+			<button class="btn btn-default btn-sm" id="create-tag">Create Tag</button>
 		</div>
-	<% } %>
-</form>
-
-<form class="well form-inline offset2 custom-form" id="tag-form">
-	<input id="tag_note_id" type="hidden" name="tag[note_id]" value="<%=note.get("id")%>">
-	<div class="form-group">
-		<input class="form-control input-sm" id="tag_name" type="text" name="tag[name]" placeholder="Untitled Tag">
-		<button class="btn btn-default btn-sm" id="create-tag">Create Tag</button>
+	</form>
 	</div>
-</form>
 
-</div>
+<% } %>

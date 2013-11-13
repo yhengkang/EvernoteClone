@@ -48,7 +48,7 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
 		var that = this;
 		var $noteList = this.$el.find("#notes-list");
 		$noteList.droppable({
-			accept: "#note-item",
+			accept: ".note-item",
 			drop: function(event, ui){
 				var noteId = ui.draggable.attr("data-id");
 				var note = EvernoteClone.Cache.Notes.get(noteId);
