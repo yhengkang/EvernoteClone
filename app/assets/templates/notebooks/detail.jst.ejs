@@ -1,17 +1,7 @@
 
 <li id="notebook-item" data-id="<%=notebook.get("id")%>">	
-	<pre class="notebook-name"><span class="glyphicon glyphicon-book"></span>  <%=notebook.escape("name")%></pre>
-	<% if(notes) { %>
-		<ul id="notes-list">
-			<% notes.forEach(function(note){ %>
-				<li>
-					<pre data-id="<%=note.get("id")%>" id="note-item">---<%=note.escape("title")%></pre>
-				</li>
-			<% }); %>
-		</ul>
-	<% } else { %>
-		<ul>
-		</ul>
-	<% } %>
+	<pre class="notebook-name"><span class="glyphicon glyphicon-book"></span>  <strong><%=notebook.escape("name")%></strong></pre>
+	<ul class="notes-list">
+	</ul>
 </li>
 

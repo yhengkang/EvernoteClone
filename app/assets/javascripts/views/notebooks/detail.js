@@ -12,18 +12,29 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 	},
 
 	render: function() {
+		var that = this;
 		var renderedContent = this.template({
 			notebook: this.model,
-			notes: EvernoteClone.Cache.Notes.where({notebook_id: this.model.id})
 		});
 		this.$el.html(renderedContent);
+		
+		var notes = EvernoteClone.Cache.Notes.where({notebook_id: this.model.id})
+		if(notes.length > 0){
+			notes.forEach(function(note){
+				var detailView = new EvernoteClone.Views.NoteDetail({
+					model: note
+				});
+				that.$el.find("ul.notes-list").append(detailView.render().$el);
+			})
+		}
+
 		this.bindJqueryUi();
 		return this;
 	},
 
 	toggleNoteList: function() {
 		console.log("clicked!");
-		this.$el.find("ul#notes-list").toggleClass("hidden");
+		this.$el.find("ul.notes-list").toggleClass("hidden");
 	},
 
 	editView: function() {
