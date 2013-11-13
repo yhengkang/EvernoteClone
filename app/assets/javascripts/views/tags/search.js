@@ -15,7 +15,7 @@ EvernoteClone.Views.TagSearch = Backbone.View.extend({
 		var renderedContent = this.template();
 		this.$el.html(renderedContent);
 		//if there are search results, append them to the ul
-		if(searchResult) {
+		if(searchResult && searchResult.models) {
 			searchResult.models.forEach(function(note){
 				//note detail view has an extra div in it, REFACTOR
 				var noteDetail = new EvernoteClone.Views.NoteDetail({
