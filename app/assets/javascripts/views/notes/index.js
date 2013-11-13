@@ -37,7 +37,7 @@ EvernoteClone.Views.NotesIndex = Backbone.View.extend({
 		newNote.save({},{
 			success: function() {
 				that.collection.add(newNote);
-				Backbone.history.navigate("notes/" + newNote.get("id"), {trigger: true});
+				// Backbone.history.navigate("notes/" + newNote.get("id"), {trigger: true});
 			}
 		});
 	},

@@ -5,6 +5,9 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 		this.notesSidebar = $("#notes-sidebar"),
 		this.notes = notes,
 		this.notebooks = notebooks
+		//re-renders notedisplay when neccessary
+		this.listenTo(this.notes, "add", this.renderNote);
+		this.listenTo(this.notes, "remove", this.renderNote);
 	},
 
 	routes: {
@@ -55,6 +58,10 @@ EvernoteClone.Routers.AppRouter = Backbone.Router.extend({
 
 	renderSearch: function() {
 		var searchView = new EvernoteClone.Views.TagSearch();
+		if(this._oldSearch){
+			this._oldSearch.remove();
+		}
+		this._oldSearch = searchView;
 		this.notebooksSidebar.append(searchView.render().$el);
 	}
 });
