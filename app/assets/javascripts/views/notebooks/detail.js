@@ -23,7 +23,7 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 		//puts rendered content into the li item
 		this.$el.html(renderedContent);
 		
-		var notes = EvernoteClone.Cache.Notes.where({notebook_id: this.model.id})
+		var notes = this.model.notes();
 		if(notes.length > 0){
 			notes.forEach(function(note){
 				var detailView = new EvernoteClone.Views.NoteDetail({
@@ -38,7 +38,6 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 	},
 
 	toggleNoteList: function() {
-		console.log("clicked!");
 		this.$el.find("ul.notes-list").toggleClass("hidden");
 	},
 
@@ -51,12 +50,11 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 	},
 
 	bindJqueryUi: function() {
-		var $notebookItem = this.$el.find("pre.notebook-item");
+		var $notebookItem = this.$el.find(".notebook-name");
 		var that = this;
 		//handles dropping of note items
 		$notebookItem.droppable({
 			accept: function(element){
-				//REFACTOR
 				return (element.is(".note-item, .note-display") );
 			},
 			drop: function(event, ui){
@@ -72,12 +70,6 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 			},
 			tolerance: "pointer"
 		});
-		//handling dragging/dropping of the notes from here
-		// var $noteItem = this.$el.find("pre#note-item");
-		// $noteItem.draggable({
-		// 	revert: "invalid"
-		// });
-		// $noteItem.disableSelection();
 	}
 
 })
