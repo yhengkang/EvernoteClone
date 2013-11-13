@@ -24,6 +24,7 @@
 		var $trashcan = $(this).find(".trashcan");
 		$trashcan.droppable({
 			accept: function(element){
+
 				var accepted = false;
 				var acceptableIds = ["note-item", "note-form", "notebook-item"]
 				var elementId = element.attr("id");

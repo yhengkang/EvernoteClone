@@ -2,7 +2,7 @@ EvernoteClone.Views.NoteDetail = Backbone.View.extend({
 	template: JST["notes/detail"],
 
 	events: {
-		"click #note-item" : "showNote"
+		"click pre.note-item" : "showNote"
 	},
 
 	render: function() {
@@ -20,7 +20,7 @@ EvernoteClone.Views.NoteDetail = Backbone.View.extend({
 	},
 
 	bindJqueryUi: function() {
-		var $noteItem = this.$el.find("pre#note-item");
+		var $noteItem = this.$el.find("pre.note-item");
 		$noteItem.draggable({
 			revert: "invalid"
 		});

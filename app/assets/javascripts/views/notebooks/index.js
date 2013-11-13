@@ -14,8 +14,8 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
 	},
 
 	events: {
-		"click button#create-notebook" : "createNotebook",
-		"click pre#note-item" : "showNote"
+		"click button#create-notebook" : "createNotebook"
+		// "click pre.note-item" : "showNote"
 	},
 
 	render: function() {
@@ -33,10 +33,10 @@ EvernoteClone.Views.NotebooksIndex = Backbone.View.extend({
 		return this;
 	},
 
-	showNote: function(event) {
-		var noteId = $(event.currentTarget).attr("data-id")
-		Backbone.history.navigate("notes/" + noteId, {trigger: true});
-	},
+	// showNote: function(event) {
+	// 	var noteId = $(event.currentTarget).attr("data-id")
+	// 	Backbone.history.navigate("notes/" + noteId, {trigger: true});
+	// },
 
 	createNotebook: function() {
 		var notebook = new EvernoteClone.Models.Notebook();
