@@ -3,7 +3,9 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 
 	initialize: function() {
 		this.listenTo(this.model, "sync", this.render),
-		this.$el = $("<li></li>")
+		this.$el = $("<li></li>"),
+		//handle listening for deletion of notes// need a better way then just re-rendering all the things
+		this.listenTo(EvernoteClone.Cache.Notes, "remove", this.render)
 	},
 
 	events: {

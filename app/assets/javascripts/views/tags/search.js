@@ -1,6 +1,10 @@
 EvernoteClone.Views.TagSearch = Backbone.View.extend({
 	template: JST["tags/search"],
 
+	initialize: function() {
+		this.listenTo(EvernoteClone.Cache.Notes, "remove", this.render)
+	},
+
 	events: {
 		"submit form#tag-search" : "searchByTag"
 	},
