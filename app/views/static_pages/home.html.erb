@@ -15,7 +15,8 @@
 </div>
 
 <div class="trashcan">
-	trashcan
+	<img src="/images/trashcan-sm-1.png" alt="trashcan" class="img-rounded" id="closed" width="150" height="150">
+	<img src="/images/trashcan-sm-2.png" alt="trashcan" class="img-rounded hidden" id="open" width="150" height="150">
 </div>
 
 <script>
@@ -60,7 +61,17 @@
 					}
 				})
 			},
-			tolerance: "pointer"
+			tolerance: "pointer",
+
+			activate: function(event, ui){
+				$(this).find("img#open").toggleClass("hidden");
+				$(this).find("img#closed").toggleClass("hidden");
+			},
+
+			deactivate: function(event, ui){
+				$(this).find("img#open").toggleClass("hidden");
+				$(this).find("img#closed").toggleClass("hidden");
+			}
 		});
 	});
 </script>

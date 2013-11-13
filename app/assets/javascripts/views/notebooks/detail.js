@@ -68,11 +68,11 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 			tolerance: "pointer"
 		});
 		//handling dragging/dropping of the notes from here
-		var $noteItem = this.$el.find("pre#note-item");
-		$noteItem.draggable({
-			revert: "invalid"
-		});
-		$noteItem.disableSelection();
+		// var $noteItem = this.$el.find("pre#note-item");
+		// $noteItem.draggable({
+		// 	revert: "invalid"
+		// });
+		// $noteItem.disableSelection();
 	}
 
 })
