@@ -14,7 +14,7 @@
 				<label for="note_content" class="sr-only">Content</label>
 				<br>
 				<textarea class="form-control" rows="15" name="note[content]" id="note_content" 
-				 placeholder="Write here!"><%=note.escape("content")%></textarea>
+				 spellcheck="false" placeholder="Write here!"><%=note.escape("content")%></textarea>
 				<br>
 			</div>
 		
@@ -24,7 +24,9 @@
 		<input id="tag_note_id" type="hidden" name="tag[note_id]" value="<%=note.get("id")%>">
 		<div class="form-group">
 			<input class="form-control input-sm" id="tag_name" type="text" name="tag[name]" placeholder="Untitled Tag">
-			<button class="btn btn-default btn-sm" id="create-tag">Create Tag</button>
+			<button class="btn btn-default btn-sm" id="create-tag">
+				<span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-tag"></span>
+			</button>
 		</div>
 	</form>
 	</div>
