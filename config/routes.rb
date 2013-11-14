@@ -7,6 +7,7 @@ EvernoteClone::Application.routes.draw do
   get "/home", :to => "StaticPages#home"
 
   post "/tags/search", :to => "tags#search"
+  post "/notes/search", :to => "notes#full_search"
 
   resources :notes, :only => [:create, :destroy, :show, :index, :update]
   resources :notebooks, :only =>[:create, :destroy, :index, :update]

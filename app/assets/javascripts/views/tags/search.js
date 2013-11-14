@@ -40,7 +40,7 @@ EvernoteClone.Views.TagSearch = Backbone.View.extend({
 		formData = $(event.currentTarget).serializeJSON();
 		$.ajax({
 			type: "POST",
-			url: "/tags/search",
+			url: "/notes/search",
 			data: formData
 		}).done(function(resp){
 			if (resp.length > 0) {

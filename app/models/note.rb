@@ -4,5 +4,5 @@ class Note < ActiveRecord::Base
 
   belongs_to :notebook
   has_many :tags, :dependent => :destroy
-  
+ 
 end

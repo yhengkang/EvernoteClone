@@ -50,4 +50,21 @@ class NotesController < ApplicationController
     render :json => {:head => :ok}
   end
 
+  def full_search
+    query = params["query"]
+    @full_search_result = Note.find_by_sql([<<-SQL, current_user.id, query, query, query])
+      SELECT
+        notes.*
+      FROM
+        notes 
+      LEFT OUTER JOIN
+        tags ON notes.id = tags.note_id
+      WHERE
+        notes.user_id = ?
+      AND
+       (? @@ tags.name OR notes.title @@ ? OR notes.content @@ ?)    
+    SQL
+    render :json => @full_search_result
+  end
+
 end
