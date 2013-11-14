@@ -22,7 +22,8 @@ EvernoteClone.Views.NoteDetail = Backbone.View.extend({
 	bindJqueryUi: function() {
 		var $noteItem = this.$el.find("pre.note-item");
 		$noteItem.draggable({
-			revert: "invalid"
+			revert: "invalid",
+			opacity: 0.7
 		});
 		$noteItem.disableSelection();
 	}

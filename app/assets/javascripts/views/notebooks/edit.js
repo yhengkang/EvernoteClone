@@ -2,7 +2,8 @@ EvernoteClone.Views.NoteEdit = Backbone.View.extend({
 	template: JST["notebooks/edit"],
 
 	events: {
-		"click button#edit-notebook" : "editNotebook"
+		"click button#edit-notebook" : "editNotebook",
+		"submit form#notebook-form" : "editNotebook"
 	},
 
 	render: function() {

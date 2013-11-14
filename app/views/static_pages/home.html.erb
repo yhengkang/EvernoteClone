@@ -32,10 +32,9 @@
 			},
 
 			drop: function(event, ui){
+				var that = this;
 				itemId = ui.draggable.attr("data-id");
 				if( ui.draggable.is(".notebook-item") ) {
-					//notebook, destroy notebook and update notes collection
-					// var item = EvernoteClone.Cache.Notebooks.get(itemId);
 					var notebook = EvernoteClone.Cache.Notebooks.get(itemId);
 					notebook.destroy({
 						success: function() {
@@ -54,11 +53,6 @@
 						}
 					});
 				}
-				// item.destroy({
-				// 	success: function() {
-				// 		ui.draggable.remove();
-				// 	}
-				// })
 			},
 			tolerance: "pointer",
 
@@ -71,6 +65,14 @@
 				$(this).find("img#open").toggleClass("hidden");
 				$(this).find("img#closed").toggleClass("hidden");
 			}
+
+			// dropAnimation: function(element) {
+		 //    element.animate({
+		 //        width:'-=50',
+		 //        height:'-=50'
+		 //    },5000);
+		 //    element.fadeOut();
+			// }
 		});
 	});
 </script>

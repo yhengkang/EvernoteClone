@@ -9,7 +9,7 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 	},
 
 	events: {
-		"dblclick .notebook-name" : "editView",
+		"click .edit-notebook" : "editView",
 		"click .notebook-name" : "toggleNoteList",
 		"click button#detail-notebook" : "render"
 	},
@@ -43,7 +43,8 @@ EvernoteClone.Views.NotebookDetail = Backbone.View.extend({
 		this.$el.find("ul.notes-list").toggleClass("hidden");
 	},
 
-	editView: function() {
+	editView: function(event) {
+		event.stopImmediatePropagation();
 		this.$el.empty();
 		var editView = new EvernoteClone.Views.NoteEdit({
 			model: this.model

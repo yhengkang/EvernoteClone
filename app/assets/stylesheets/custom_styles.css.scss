@@ -27,6 +27,19 @@ body {
 	margin-right: auto;
 }
 
+pre {
+ font: 14px/16px sans-serif;
+}
+
+pre.note-item {
+	max-width: 85%;
+}
+
+//cog glyphicon
+span.glyphicon-cog {
+	font-size: 1.2em;
+}
+
 //TAG FORM 
 input.input-sm#tag_name {
 	width: 60%;

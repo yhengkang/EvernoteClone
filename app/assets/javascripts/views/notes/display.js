@@ -68,7 +68,8 @@
 	bindJqueryUi: function() {
 		var $noteDisplay = this.$el.find("div.note-display");
 		$noteDisplay.draggable({
-			revert: "invalid"
+			revert: "invalid",
+			opacity: 0.7
 		});
 	}
 
