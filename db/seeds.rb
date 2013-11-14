@@ -7,7 +7,6 @@ end
 guestUser = User.create!(email: "guest@heifernote.com", password: "supersecretcows")
 
 ##UNCATEGORIZED NOTES#
-
 n2 = Note.new(title: "To do list", content:"-Make resume\r\n-Get hired\r\n-Make money\r\n-Retire")
 n2.user_id = guestUser.id
 n2.save!
