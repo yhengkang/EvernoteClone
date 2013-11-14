@@ -34,6 +34,7 @@
 			drop: function(event, ui){
 				var that = this;
 				itemId = ui.draggable.attr("data-id");
+				// ui.draggable.toggle("scale");
 				if( ui.draggable.is(".notebook-item") ) {
 					var notebook = EvernoteClone.Cache.Notebooks.get(itemId);
 					notebook.destroy({
@@ -45,7 +46,6 @@
 						}
 					});
 				} else {
-					// var item = EvernoteClone.Cache.Notes.get(itemId);
 					var note = EvernoteClone.Cache.Notes.get(itemId);
 					note.destroy({
 						success: function() {
