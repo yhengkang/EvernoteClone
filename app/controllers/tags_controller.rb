@@ -14,18 +14,9 @@ class TagsController < ApplicationController
 		render :json => {:head => :ok}
 	end
 
-	def search
-		@search_result = Tag.find_by_sql([<<-SQL, current_user.id, params["tag"]["name"]])
-			SELECT
-				notes.*
-			FROM
-				tags 
-			JOIN
-				notes ON tags.note_id = notes.id
-			WHERE
-				notes.user_id = ? AND tags.name = ?			
-		SQL
-		render :json => @search_result
+	def index
+		@tags = Tag.all
+		render :json => @tags
 	end
 
 end

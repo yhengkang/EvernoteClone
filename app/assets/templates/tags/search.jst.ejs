@@ -1,7 +1,15 @@
 <h3>Search</h3> 
 <form class="well form-inline offset2 custom-form" id="tag-search"> 
-	<input type="text" name="query" placeholder="Search by ALL THE THINGS">
-	<button class="btn btn-default" id="search-button">Search</button>
+	<div class="row">
+		<div class="col-xs-10">
+			<input type="text" class="form-control" name="query" placeholder="Search by ALL THE THINGS">
+		</div>
+		<div class="col-xs-2">
+			<button class="btn btn-default pull-right" id="search-button">
+				<span class="glyphicon glyphicon-search"></span>
+			</button>
+		</div>
+	</div>
 </form>
 <ul id="search-result-list">
 </ul>

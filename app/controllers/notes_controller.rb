@@ -52,7 +52,7 @@ class NotesController < ApplicationController
 
   def full_search
     query = params["query"]
-    @full_search_result = Note.find_by_sql([<<-SQL, current_user.id, query, query, query])
+    @full_search_result = Note.find_by_sql([<<-SQL, current_user.id, query, query, query, query])
       SELECT
         notes.*
       FROM
@@ -62,7 +62,7 @@ class NotesController < ApplicationController
       WHERE
         notes.user_id = ?
       AND
-       (? @@ tags.name OR notes.title @@ ? OR notes.content @@ ?)    
+       (? @@ tags.name OR tags.name @@ ? OR notes.title @@ ? OR notes.content @@ ?)    
     SQL
     render :json => @full_search_result
   end

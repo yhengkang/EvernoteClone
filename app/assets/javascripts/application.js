@@ -16,6 +16,7 @@
 //= require jquery-ui-1.10.3.custom.min.js
 //= require underscore
 //= require backbone
+//= require typeahead.min.js
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require jquery.serializeJSON.min.js

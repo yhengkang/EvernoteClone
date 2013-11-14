@@ -51,4 +51,5 @@ EvernoteClone.Views.TagSearch = Backbone.View.extend({
 			}
 		});
 	}
+
 })
