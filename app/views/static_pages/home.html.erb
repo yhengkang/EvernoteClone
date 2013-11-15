@@ -65,14 +65,14 @@
 				$(this).find("img#open").toggleClass("hidden");
 				$(this).find("img#closed").toggleClass("hidden");
 			}
-
-			// dropAnimation: function(element) {
-		 //    element.animate({
-		 //        width:'-=50',
-		 //        height:'-=50'
-		 //    },5000);
-		 //    element.fadeOut();
-			// }
 		});
+
+		// tooltip
+		$trashcan.tooltip({
+			'show': true,
+			'placement': top,
+			'title': "Trashcan"
+		});
+		$trashcan.tooltip('show');
 	});
 </script>
