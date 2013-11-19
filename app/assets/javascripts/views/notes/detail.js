@@ -5,6 +5,10 @@ EvernoteClone.Views.NoteDetail = Backbone.View.extend({
 		"click pre.note-item" : "showNote"
 	},
 
+	initialize: function() {
+		this.listenTo(this.model, "change", this.render);
+	},
+
 	render: function() {
 		var renderedContent = this.template({
 			note: this.model

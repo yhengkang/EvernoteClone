@@ -3,8 +3,10 @@
 	template: JST["notes/display"],
 
 	events: {
-		"keyup input#note_title" : "updateTimer",
-		"keyup textarea#note_content" : "updateTimer",
+		// "keyup input#note_title" : "updateTimer",
+		// "keyup textarea#note_content" : "updateTimer",
+		"keyup input#note_title" : "updateModel",
+		"keyup textarea#note_content" : "updateModel",
 		"submit form#tag-form" : "createTag"
 	},
 
@@ -27,29 +29,38 @@
 		return this;
 	},
 
-	updateNote: function(formData) {
-		var that = this;
-		this.model.save(formData, {
-			success: function() {
-				that.collection.sort();		
-			}
-		});
-	},
-
-	updateTimer: function(timeDelay) {
-		if ($(event.srcElement).attr("id") === "note_title") {
-			var timeDelay = 10;
-		} else {
-			var timeDelay = 2000;
-		}
-
-		if(this._timerId){
-			window.clearTimeout(this._timerId);
-		}
-		//form data is now compiled each time the timer is created
+	updateModel: function() {
 		var formData = $("form#note-form").serializeJSON();
-		this._timerId = window.setTimeout(this.updateNote.bind(this), timeDelay, formData);
+		this.model.set(formData);
+		if(this._timerId) {
+			window.clearTimeout(this._timerId)
+		}
+		this._timerId = window.setTimeout(this.model.sync, 20000, "update", this.model)
 	},
+
+	// updateNote: function(formData) {
+	// 	var that = this;
+	// 	this.model.save(formData, {
+	// 		success: function() {
+	// 			that.collection.sort();		
+	// 		}
+	// 	});
+	// },
+
+	// updateTimer: function(timeDelay) {
+	// 	if ($(event.srcElement).attr("id") === "note_title") {
+	// 		var timeDelay = 10;
+	// 	} else {
+	// 		var timeDelay = 2000;
+	// 	}
+
+	// 	if(this._timerId){
+	// 		window.clearTimeout(this._timerId);
+	// 	}
+	// 	//form data is now compiled each time the timer is created
+	// 	var formData = $("form#note-form").serializeJSON();
+	// 	this._timerId = window.setTimeout(this.updateNote.bind(this), timeDelay, formData);
+	// },
 
 	createTag: function(event) {
 		event.preventDefault();

@@ -8,12 +8,12 @@
 			<div class="controls">
 				<label for="note_title" class="sr-only">Title</label>	
 				<br>
-				<input class="form-control" type="text" name="note[title]" 
+				<input class="form-control" type="text" name="title" 
 							 value="<%=note.escape("title")%>" id="note_title" placeholder="Untitled Note">
 				<br>
 				<label for="note_content" class="sr-only">Content</label>
 				<br>
-				<textarea class="form-control" rows="15" name="note[content]" id="note_content" 
+				<textarea class="form-control" rows="15" name="content" id="note_content" 
 				 spellcheck="false" placeholder="Write here!"><%=note.escape("content")%></textarea>
 				<br>
 			</div>
