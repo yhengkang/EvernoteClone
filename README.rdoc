@@ -1,5 +1,5 @@
-
 Project to clone Evernote
+
 Implemented Features
 - Basic user authoriziation
 - Adding/deleting notes
@@ -8,14 +8,15 @@ Implemented Features
 - Adding/deleting tags
 - Search by tags
 
-### Advanced Features
+Advanced Features
 - Full text search
 - Full drag and drop interface
 - Auto syncing of models with database
   - Resync on failure
 
 
-## Future Features
+Future Features
 - Bug fixes
   - review re-rendering listening events
 
+[Website](http://heifernote.herokuapp.com/)
