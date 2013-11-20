@@ -1,5 +1,7 @@
 ## Project to clone Evernote
 
+[HeiferNote](http://heifernote.herokuapp.com/)
+
 ### Implemented Features
 - Basic user authoriziation
 - Adding/deleting notes
@@ -18,4 +20,4 @@
 - Bug fixes
   - review re-rendering listening events
 
-[Website](http://heifernote.herokuapp.com/)
+
